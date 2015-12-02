@@ -1,0 +1,37 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>basket.js with CSS</title>
+</head>
+<body>
+<script src="lib/create-stylesheet.unwrapped-0.2.1.js"></script>
+<script src="lib/basket.full.min-0.0.3.js"></script>
+<script>
+
+    basket.require(
+        { url: 'lib/a.js'},
+        { url: 'lib/b.js'},
+        { url: 'lib/c.js'})
+    .then(function(responses){
+        _stylesheet.appendStyleSheet(responses[0],function(err, style){
+            if(err){
+                console.error(err);
+            }else{
+                console.log("Stylesheet successfully load via basket.js");
+            }
+        })
+
+        basket.require(
+            { url: 'lib/a.js' },
+            { url: 'lib/e.js' },
+            { url: 'lib/b.js'},
+            { url: 'lib/c.js' },
+            { url: 'lib/d.js' },
+            { url: 'lib/f.js' },
+            { url: 'lib/g.js' });
+    });
+
+</script>
+
+</body>
+</html>
